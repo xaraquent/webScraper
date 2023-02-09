@@ -2,10 +2,11 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const PORT = 8000;
 const express = require('express');
-// const cors = require('cors');
-// app.use(cors());
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors({ origin: '*' }));
 
 app.listen(PORT, () => console.log(`server running on PORT ${PORT}`));
 const title_names = [];
@@ -26,11 +27,11 @@ const fetchTitles = async () => {
     }
 };
 
-fetchTitles()
-    .then((title_names) => console.log(title_names))
-    .catch((error) => console.log(error));
+fetchTitles();
+// .then((title_names) => console.log(title_names))
+// .catch((error) => console.log(error));
 
 app.get('/', (req, res) => {
     res.send(title_names);
-    console.log(req);
+    // console.log(req);
 });
