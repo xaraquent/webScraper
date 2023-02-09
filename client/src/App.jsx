@@ -8,7 +8,7 @@ function App() {
     useEffect(() => {
         async function getData() {
             try {
-                const res = await axios.get('https://localhost:8000/');
+                const res = await axios.get('https://localhost:8000');
                 setItems(res.data);
                 console.log(items);
             } catch (error) {
